@@ -1,0 +1,384 @@
+<robot name="URDF_MECANUM">
+
+  <link name="dummy_link" />
+  <joint name="dummy_joint" type="fixed">
+    <parent link="dummy_link" />
+    <child link="base_link" />
+  </joint>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.00130677836284812 -3.1885485958809E-05 -0.0202130965876877" rpy="0 0 0" />
+      <mass value="1.31035359619689" />
+      <inertia ixx="0.004215" ixy="0.0" ixz="0.0" iyy="0.006761" iyz="0.0" izz="0.010849" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_mecanum_bot/meshes/base_link.STL" />
+      </geometry>
+      <material name="mat_base_link">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.09" rpy="0 0 0" />
+      <geometry>
+        <box size="0.25 0.15 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="camera_Link">
+    <inertial>
+      <origin xyz="-0.013419 2.3369E-05 -1.1338E-14" rpy="0 0 0" />
+      <mass value="0.11585" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_mecanum_bot/meshes/camera_Link.STL" />
+      </geometry>
+      <material name="mat_camera">
+        <color rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.1 0.05" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0.17938 -0.0055723 0.0225" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="camera_Link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="lidar_Link">
+    <inertial>
+      <origin xyz="1.4502E-15 4.0939E-15 -0.055099" rpy="0 0 0" />
+      <mass value="0.4" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_mecanum_bot/meshes/lidar_Link.STL" />
+      </geometry>
+      <material name="mat_lidar">
+        <color rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.035" length="0.04" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="lidar_joint" type="fixed">
+    <origin xyz="-0.1326 -0.020052 0.1" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="lidar_Link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="Wheel_TP_Link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.131872981287078" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_mecanum_bot/meshes/Wheel_TP_Link.STL" />
+      </geometry>
+      <material name="mat_wheel_tp">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="Wheel_TP_joint" type="continuous">
+    <origin xyz="0.1399 -0.1972 -0.045" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="Wheel_TP_Link" />
+    <axis xyz="0 1 0" />
+    <limit effort="500" velocity="50" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <link name="Wheel_TT_Link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.13187" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_mecanum_bot/meshes/Wheel_TT_Link.STL" />
+      </geometry>
+      <material name="mat_wheel_tt">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="Wheel_TT_joint" type="continuous">
+    <origin xyz="0.1399 0.1971 -0.045" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="Wheel_TT_Link" />
+    <axis xyz="0 1 0" />
+    <limit effort="500" velocity="50" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <link name="Wheel_DP_Link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.13187" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_mecanum_bot/meshes/Wheel_DP_Link.STL" />
+      </geometry>
+      <material name="mat_wheel_dp">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="Wheel_DP_joint" type="continuous">
+    <origin xyz="-0.1451 -0.1972 -0.045" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="Wheel_DP_Link" />
+    <axis xyz="0 1 0" />
+    <limit effort="500" velocity="50" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <link name="Wheel_DT_Link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.13187" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_mecanum_bot/meshes/Wheel_DT_Link.STL" />
+      </geometry>
+      <material name="mat_wheel_dt">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="Wheel_DT_joint" type="continuous">
+    <origin xyz="-0.1451 0.1971 -0.045" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="Wheel_DT_Link" />
+    <axis xyz="0 1 0" />
+    <limit effort="500" velocity="50" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <link name="Tay1_Link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.3" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.0025" iyz="0.0" izz="0.0024" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_mecanum_bot/meshes/Tay1_Link.STL" />
+      </geometry>
+      <material name="mat_tay1">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.1" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.05 0.2" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Tay1_joint" type="prismatic">
+    <origin xyz="0.077397 -0.00028091 0.013" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="Tay1_Link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.12" upper="0.055" effort="500" velocity="1" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <link name="Tay2_Link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.084918" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_mecanum_bot/meshes/Tay2_Link.STL" />
+      </geometry>
+      <material name="mat_tay2">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.1 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.2 0.02 0.02" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Tay2_joint" type="prismatic">
+    <origin xyz="-0.14536 0.048815 0.24112" rpy="0 0 0" />
+    <parent link="Tay1_Link" />
+    <child link="Tay2_Link" />
+    <axis xyz="1 0 0" />
+    <limit lower="0" upper="0.2" effort="250" velocity="1" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <gazebo reference="base_link">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+
+  <gazebo reference="camera_Link">
+    <sensor type="camera" name="my_camera">
+      <update_rate>30.0</update_rate>
+      <visualize>true</visualize>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+      </camera>
+      <plugin name="gazebo_ros_camera" filename="libgazebo_ros_camera.so">
+        <ros>
+          <remapping>~/image_raw:=camera/image_raw</remapping>
+          <remapping>~/camera_info:=camera/camera_info</remapping>
+        </ros>
+        <camera_name>camera</camera_name>
+        <frame_name>camera_Link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="lidar_Link">
+    <sensor type="ray" name="my_lidar">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize> <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.15</min>
+          <max>12.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="gazebo_ros_ray_sensor" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <remapping>~/out:=scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>lidar_Link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="mecanum_drive_controller" filename="libgazebo_ros_planar_move.so">
+      <ros>
+        <remapping>cmd_vel:=cmd_vel</remapping>
+        <remapping>odom:=odom</remapping>
+      </ros>
+      <update_rate>50.0</update_rate>
+      <publish_rate>50.0</publish_rate>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+    </plugin>
+  </gazebo>
+
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+
+    <joint name="Wheel_TT_joint">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="Wheel_TP_joint">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="Wheel_DT_joint">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="Wheel_DP_joint">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="Tay1_joint">
+      <command_interface name="position">
+        <param name="min">-0.12</param>
+        <param name="max">0.055</param>
+      </command_interface>
+      <state_interface name="position"/>
+    </joint>
+    <joint name="Tay2_joint">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">0.2</param>
+      </command_interface>
+      <state_interface name="position"/>
+    </joint>
+  </ros2_control>
+
+  <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+      <parameters>$(find my_mecanum_bot)/config/controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+</robot>

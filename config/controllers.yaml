@@ -1,0 +1,38 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    # Thêm bộ điều khiển cho bánh xe
+    wheel_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
+arm_controller:
+  ros__parameters:
+    joints:
+      - Tay1_joint
+      - Tay2_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+    open_loop_control: true
+    allow_integration_in_goal_trajectory: true
+
+wheel_controller:
+  ros__parameters:
+    joints:
+      - Wheel_TT_joint
+      - Wheel_TP_joint
+      - Wheel_DT_joint
+      - Wheel_DP_joint
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - position
+      - velocity
