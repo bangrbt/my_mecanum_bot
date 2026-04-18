@@ -5,7 +5,7 @@ Package `my_mecanum_bot` cung cấp môi trường mô phỏng toàn diện cho 
 ## ✨ Tính năng Kỹ thuật
 - **Động học Mecanum (Omnidirectional Kinematics):** Điều khiển 4 bánh xe độc lập cho phép robot di chuyển tịnh tiến 2D (tiến, lùi, trượt ngang) và xoay tại chỗ (yaw).
 - **Cấu trúc Tay máy (Manipulator):** Tích hợp 2 khớp tịnh tiến (Prismatic joints) phục vụ tác vụ vươn và nâng hạ.
-- **Hệ thống Cảm biến (Sensors):** Mô phỏng LiDAR quét 360 độ và Camera RGB với luồng dữ liệu thời gian thực được map qua ROS topics.
+- **Hệ thống Cảm biến (Sensors):** Mô phỏng LiDAR quét 360 độ, Camera RGB, Encoder vấn tốc góc bánh với luồng dữ liệu thời gian thực được map qua ROS topics.
 - **Sinh quỹ đạo tự động (Auto-Trajectory & Marker):** Tự động chuyển đổi chuỗi ký tự đầu vào thành tín hiệu điều khiển vận tốc, đồng thời render quỹ đạo di chuyển trực quan thông qua `visualization_msgs/Marker` trên không gian RViz2.
 
 ---
