@@ -25,40 +25,39 @@ sudo apt install ros-humble-xacro ros-humble-gazebo-ros-pkgs \
 ros-humble-gazebo-ros2-control ros-humble-ros2-control \
 ros-humble-ros2-controllers ros-humble-velocity-controllers \
 ros-humble-joint-trajectory-controller python3-pynput
-
+``` 
 🚀 Hướng dẫn Cài đặt & Khởi chạy (Installation & Launch)
 Bước 1: Clone Repository
 
 Tạo ROS 2 workspace và tải source code:
-Bash
 
+```bash
 mkdir -p ~/mecanum_ws/src
 cd ~/mecanum_ws/src
 git clone [https://github.com/](https://github.com/)<TEN_GITHUB_CUA_BAN>/my_mecanum_bot.git
-
+```
 Bước 2: Biên dịch (Build Workspace)
-Bash
+```Bash
 
 cd ~/mecanum_ws
 rm -rf build/ install/ log/
 colcon build --packages-select my_mecanum_bot
 source install/setup.bash
-
+```
 Bước 3: Khởi động Môi trường Mô phỏng
 
 Lệnh khởi chạy sẽ tự động nạp cấu hình URDF, spawn model vào Gazebo và thiết lập giao diện RViz2:
-Bash
+```Bash
 
 ros2 launch my_mecanum_bot display.launch.py
-
+```
 🎮 Vận hành & Điều khiển (Operation & Control)
 
-Mở một Terminal mới, thực thi lệnh source ~/mecanum_ws/install/setup.bash trước khi gọi các script điều khiển.
+Mở một Terminal mới, thực thi lệnh `source ~/mecanum_ws/install/setup.bash` trước khi gọi các script điều khiển.
 Chế độ 1: Điều khiển Thủ công (Manual Teleop)
 
 Kích hoạt node lắng nghe bàn phím để xuất lệnh vận tốc cmd_vel và lệnh vị trí tay máy.
-Bash
-
+```Bash
 python3 src/my_mecanum_bot/scripts/teleop_full.py
 
     W / S: Tiến / Lùi.
@@ -72,14 +71,14 @@ python3 src/my_mecanum_bot/scripts/teleop_full.py
     T / G: Tịnh tiến trục X (Thò/Thụt tay 2).
 
     ESC: Dừng khẩn cấp.
-
+```
 Chế độ 2: Sinh quỹ đạo tự động (Auto Trajectory)
 
 Node tự động chuyển hóa văn bản thành tham số quỹ đạo hình học và vẽ Marker lên RViz2.
-Bash
+```Bash
 
 python3 src/my_mecanum_bot/scripts/auto_trajectory.py
-
+```
     Cách sử dụng: Nhập chuỗi ký tự (VD: UET, ROS) và nhấn Enter. Robot sẽ tự động nội suy tín hiệu vận tốc để di chuyển theo hình chữ cái.
 
     Tính năng mở rộng: Nhập chuỗi mới và nhấn Enter trong lúc robot đang vận hành sẽ kích hoạt lệnh DELETEALL Marker, reset State Machine và bắt đầu vẽ lại từ đầu.
