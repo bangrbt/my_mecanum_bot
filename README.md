@@ -50,6 +50,10 @@ Lệnh khởi chạy sẽ tự động nạp cấu hình URDF, spawn model vào 
 ```
 ros2 launch my_mecanum_bot display.launch.py
 ```
+Lệnh hiển thị dữ liệu Enocder:
+```
+python3 src/my_mecanum_bot/scripts/read_encoder.py
+```
 🎮 Vận hành & Điều khiển (Operation & Control)
 
 Mở một Terminal mới, thực thi lệnh `source ~/mecanum_ws/install/setup.bash` trước khi gọi các script điều khiển.
