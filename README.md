@@ -2,13 +2,14 @@
 
 Package `my_mecanum_bot` cung cấp môi trường mô phỏng toàn diện cho robot di chuyển đa hướng (Mecanum) trên nền tảng **ROS 2 Humble** và **Gazebo Classic**. Hệ thống tích hợp điều khiển động học (Kinematics), tay máy (Manipulator) 2 bậc tự do (Ở đây là 2 khâu tịnh tiến), cấu hình cảm biến (LiDAR, Camera, Encoder), và tính năng tự động sinh quỹ đạo trực quan trên RViz2.
 
-Trong dự án có bao gồm cả bản báo cáo trình bày mô tả chi tiết, và video thử nghiệm mô hình.
+Dự án đi kèm bản báo cáo học thuật chi tiết và video nghiệm thu thực tế mô hình.
 
 ## ✨ Tính năng Kỹ thuật
 - **Động học Mecanum (Omnidirectional Kinematics):** Điều khiển 4 bánh xe độc lập cho phép robot di chuyển tịnh tiến 2D (tiến, lùi, trượt ngang) và xoay tại chỗ (yaw).
 - **Cấu trúc Tay máy (Manipulator):** Tích hợp 2 khớp tịnh tiến (Prismatic joints) phục vụ tác vụ vươn và nâng hạ.
 - **Hệ thống Cảm biến (Sensors):** Mô phỏng LiDAR quét 360 độ, Camera RGB, Encoder vấn tốc, góc bánh với luồng dữ liệu thời gian thực được map qua ROS topics.
-- **Sinh quỹ đạo tự động (Auto-Trajectory & Marker):** Tự động chuyển đổi chuỗi ký tự đầu vào thành tín hiệu điều khiển vận tốc, đồng thời render quỹ đạo di chuyển trực quan thông qua `visualization_msgs/Marker` trên không gian RViz2.
+- **Sinh quỹ đạo tự động (Auto-Trajectory & Marker):** Tự động chuyển đổi chuỗi ký tự đầu vào thành tín hiệu điều khiển vận tốc, đồng thời render quỹ đạo di chuyển trực quan thông qua `visualization_msgs/Marker`
+- **Môi trường Độc lập (Standalone Environment): Đã được đóng gói sẵn bản đồ 3D ngôi nhà (`house.world`) và các models vật thể, cho phép khởi chạy trực tiếp mà không phụ thuộc vào các gói thư viện ngoại vi trên không gian RViz2.
 
 ---
 
@@ -103,6 +104,7 @@ python3 src/my_mecanum_bot/scripts/auto_trajectory.py
    `scripts/`: Chứa các Node Python xử lý logic điều khiển và sinh quỹ đạo.
 
    `rviz/`: Tệp tin lưu trữ tham số hiển thị giao diện RViz2 (config.rviz).
+   `world/ & models/`: Dữ liệu bản đồ vật lý và đối tượng 3D dùng cho mô phỏng môi trường nhà độc lập.
 
 👤 Tác giả
 
