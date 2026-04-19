@@ -26,11 +26,11 @@ ros-humble-gazebo-ros2-control ros-humble-ros2-control \
 ros-humble-ros2-controllers ros-humble-velocity-controllers \
 ros-humble-joint-trajectory-controller python3-pynput
 ``` 
-🚀 Hướng dẫn Cài đặt & Khởi chạy (Installation & Launch)
+## 🚀 Hướng dẫn Cài đặt & Khởi chạy (Installation & Launch)
 Bước 1: Clone Repository
 
 Tạo ROS 2 workspace và tải source code:
-
+Mở Terminal và clone kho lưu trữ này vào thư mục src trong ROS 2 Workspace của bạn (ví dụ: `~/mecanum_ws`):
 ```
 mkdir -p ~/mecanum_ws/src
 cd ~/mecanum_ws/src
