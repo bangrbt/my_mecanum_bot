@@ -93,19 +93,21 @@ python3 src/my_mecanum_bot/scripts/auto_trajectory.py
 
 📁 Cấu trúc Thư mục (Directory Structure)
 
-   `urdf/`: Chứa file mô tả vật lý robot (URDF_MECANUM.urdf) bao gồm thẻ inertial, collision và plugins.
+Dự án được tổ chức chặt chẽ theo tiêu chuẩn C++ / Python của hệ sinh thái ROS 2:
 
-   `meshes/`: Chứa các file mô hình 3D CAD (.STL) cho Visual rendering.
+    urdf/: Chứa tệp mô tả vật lý robot (URDF_MECANUM.urdf) với các thẻ inertial, collision và định nghĩa plugin Gazebo.
 
-   `config/`: Định nghĩa tham số cho ros2_control (hardware interfaces, controllers).
+    meshes/: Lưu trữ các file thiết kế cơ khí 3D CAD (.STL) phục vụ đồ họa Visual.
 
-   `launch/`: Script khởi tạo Gazebo, RViz2, robot_state_publisher và controller spawner.
+    config/: Chứa tệp controllers.yaml định nghĩa tham số PID và hardware interfaces cho hệ thống ros2_control.
 
-   `scripts/`: Chứa các Node Python xử lý logic điều khiển và sinh quỹ đạo.
+    launch/: Script khởi tạo tích hợp (Gazebo, RViz2, state_publisher và controller spawners).
 
-   `rviz/`: Tệp tin lưu trữ tham số hiển thị giao diện RViz2 (config.rviz).
-   
-   `world/ & models/`: Dữ liệu bản đồ vật lý và đối tượng 3D dùng cho mô phỏng môi trường nhà độc lập.
+    scripts/: Nơi chứa các Node Python xử lý logic điều khiển tín hiệu và sinh quỹ đạo.
+
+    world/ & models/: Dữ liệu bản đồ vật lý và đối tượng 3D dùng cho mô phỏng môi trường nhà độc lập.
+
+    rviz/: Tệp tin lưu trữ tham số hiển thị, góc nhìn và marker của giao diện RViz2 (config.rviz).
 
 👤 Tác giả
 
