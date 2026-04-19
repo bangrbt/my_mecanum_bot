@@ -9,7 +9,7 @@ Dự án đi kèm bản báo cáo học thuật chi tiết và video nghiệm th
 - **Cấu trúc Tay máy (Manipulator):** Tích hợp 2 khớp tịnh tiến (Prismatic joints) phục vụ tác vụ vươn và nâng hạ.
 - **Hệ thống Cảm biến (Sensors):** Mô phỏng LiDAR quét 360 độ, Camera RGB, Encoder vấn tốc, góc bánh với luồng dữ liệu thời gian thực được map qua ROS topics.
 - **Sinh quỹ đạo tự động (Auto-Trajectory & Marker):** Tự động chuyển đổi chuỗi ký tự đầu vào thành tín hiệu điều khiển vận tốc, đồng thời render quỹ đạo di chuyển trực quan thông qua `visualization_msgs/Marker`
-- **Môi trường Độc lập (Standalone Environment): Đã được đóng gói sẵn bản đồ 3D ngôi nhà (`house.world`) và các models vật thể, cho phép khởi chạy trực tiếp mà không phụ thuộc vào các gói thư viện ngoại vi trên không gian RViz2.
+- **Môi trường Độc lập (Standalone Environment):** Đã được đóng gói sẵn bản đồ 3D ngôi nhà (`house.world`) và các models vật thể, cho phép khởi chạy trực tiếp mà không phụ thuộc vào các gói thư viện ngoại vi trên không gian RViz2.
 
 ---
 
@@ -79,8 +79,8 @@ python3 src/my_mecanum_bot/scripts/teleop_full.py
 
    ESC: Dừng khẩn cấp.
     
-Chế độ 2: Sinh quỹ đạo tự động (Auto Trajectory) 
-(Trước khi khởi chạy lệnh này cần đóng Chế độ 1 lại)
+Chế độ 2: Sinh quỹ đạo tự động (Auto Trajectory) \
+(Lưu ý: Vui lòng tắt Node ở Chế độ 1 bằng Ctrl+C trước khi chạy lệnh này)
 
 Node tự động chuyển hóa văn bản thành tham số quỹ đạo hình học và vẽ Marker lên RViz2.
 ```
