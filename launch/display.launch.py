@@ -17,6 +17,16 @@ def generate_launch_description():
     robot_desc = doc.toxml()
 
     set_gazebo_model_path_cmd = SetEnvironmentVariable('GAZEBO_MODEL_PATH', os.path.join(pkg_share, '..'))
+    
+    # Khai báo đường dẫn map (Chú ý: folder của bạn tên là 'world' không có 's')
+    world_file_path = os.path.join(pkg_share, 'world', 'house.world')
+
+    # Khởi chạy Gazebo VÀ nạp file map
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(
+            get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
+        launch_arguments={'world': world_file_path}.items()
+    )
 
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
@@ -34,11 +44,6 @@ def generate_launch_description():
         name='rviz2',
         output='screen',
         parameters=[{'use_sim_time': True}]
-    )
-
-    gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
     )
 
     spawn_entity = Node(
@@ -60,7 +65,6 @@ def generate_launch_description():
         arguments=["arm_controller"],
     )
 
-    # Thêm node kích hoạt bánh xe
     wheel_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
@@ -69,11 +73,11 @@ def generate_launch_description():
 
     return LaunchDescription([
         set_gazebo_model_path_cmd,
+        gazebo, # Chỉ gọi Gazebo 1 lần ở đây thôi
         robot_state_publisher_node,
         rviz_node,
-        gazebo,
         spawn_entity,
         joint_state_broadcaster_spawner,
         arm_controller_spawner,
-        wheel_controller_spawner, # Kích hoạt tại đây
+        wheel_controller_spawner,
     ])
