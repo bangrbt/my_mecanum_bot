@@ -52,7 +52,7 @@ Lệnh khởi chạy sẽ tự động nạp cấu hình URDF, spawn model vào 
 ```
 ros2 launch my_mecanum_bot display.launch.py
 ```
-Lệnh hiển thị dữ liệu Enocder:
+Lệnh hiển thị dữ liệu Enocder (Mở 1 Terminal mới):
 ```
 python3 src/my_mecanum_bot/scripts/read_encoder.py
 ```
@@ -77,7 +77,8 @@ python3 src/my_mecanum_bot/scripts/teleop_full.py
 
    ESC: Dừng khẩn cấp.
     
-Chế độ 2: Sinh quỹ đạo tự động (Auto Trajectory)
+Chế độ 2: Sinh quỹ đạo tự động (Auto Trajectory) 
+(Trước khi khởi chạy lệnh này cần đóng Chế độ 1 lại)
 
 Node tự động chuyển hóa văn bản thành tham số quỹ đạo hình học và vẽ Marker lên RViz2.
 ```
