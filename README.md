@@ -104,6 +104,7 @@ python3 src/my_mecanum_bot/scripts/auto_trajectory.py
    `scripts/`: Chứa các Node Python xử lý logic điều khiển và sinh quỹ đạo.
 
    `rviz/`: Tệp tin lưu trữ tham số hiển thị giao diện RViz2 (config.rviz).
+   
    `world/ & models/`: Dữ liệu bản đồ vật lý và đối tượng 3D dùng cho mô phỏng môi trường nhà độc lập.
 
 👤 Tác giả
