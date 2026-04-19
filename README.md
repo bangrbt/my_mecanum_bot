@@ -38,8 +38,8 @@ mkdir -p ~/mecanum_ws/src
 cd ~/mecanum_ws/src
 git clone [https://github.com/](https://github.com/)<TEN_GITHUB_CUA_BAN>/my_mecanum_bot.git
 ```
-Bước 2: Biên dịch (Build Workspace)
-(Nhớ thay `~/mecanum_ws` bằng tên thư mục WS của bạn)
+Bước 2: Biên dịch (Build Workspace) \
+(Nhớ thay `~/mecanum_ws` bằng tên thư mục Workspace của bạn)
 ```
 
 cd ~/mecanum_ws
