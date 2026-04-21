@@ -18,7 +18,6 @@ def generate_launch_description():
 
     set_gazebo_model_path_cmd = SetEnvironmentVariable('GAZEBO_MODEL_PATH', os.path.join(pkg_share, '..'))
     
-    # Khai báo đường dẫn map (Chú ý: folder của bạn tên là 'world' không có 's')
     world_file_path = os.path.join(pkg_share, 'world', 'house.world')
 
     # Khởi chạy Gazebo VÀ nạp file map
