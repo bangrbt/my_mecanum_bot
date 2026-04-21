@@ -84,6 +84,10 @@ python3 src/my_mecanum_bot/scripts/teleop_full.py
 
    T / G: Tịnh tiến trục X (Thò/Thụt tay 2).
 
+   W + A : Tiến chéo trái    W + D : Tiến chéo phải
+   
+   S + A : Lùi chéo trái     S + D : Lùi chéo phải
+
    ESC: Dừng khẩn cấp.
     
 Chế độ 2: Sinh quỹ đạo tự động (Auto Trajectory) \
