@@ -1,9 +1,14 @@
 # 🤖 Mecanum Robot Simulation - ROS 2 Humble
 
-Package `my_mecanum_bot` cung cấp môi trường mô phỏng toàn diện cho robot di chuyển đa hướng (Mecanum) trên nền tảng **ROS 2 Humble** và **Gazebo Classic**. Hệ thống tích hợp điều khiển động học (Kinematics), tay máy (Manipulator) 2 bậc tự do (Ở đây là 2 khâu tịnh tiến), cấu hình cảm biến (LiDAR, Camera, Encoder), và tính năng tự động sinh quỹ đạo trực quan trên RViz2.
+![Ubuntu 22.04](https://img.shields.io/badge/Ubuntu-22.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![ROS 2 Humble](https://img.shields.io/badge/ROS_2-Humble-34a853?style=for-the-badge&logo=ros&logoColor=white)
+![Gazebo Classic](https://img.shields.io/badge/Gazebo-Classic_11-FFB200?style=for-the-badge&logo=gazebo&logoColor=black)
+![Python 3.10](https://img.shields.io/badge/Python-3.10-3776AB?style=for-the-badge&logo=python&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+Package `my_mecanum_bot` cung cấp môi trường mô phỏng toàn diện cho robot di chuyển đa hướng (Mecanum) trên nền tảng **ROS 2 Humble** và **Gazebo Classic**. Hệ thống tích hợp điều khiển động học (Kinematics), tay máy (Manipulator) 2 bậc tự do (khớp tịnh tiến), cấu hình cảm biến (LiDAR, Camera, Encoder), và tính năng tự động sinh quỹ đạo trực quan trên RViz2.
 
 Dự án đi kèm bản báo cáo học thuật chi tiết và video nghiệm thu thực tế mô hình.
-
 ## ✨ Tính năng Kỹ thuật
 - **Động học Mecanum (Omnidirectional Kinematics):** Điều khiển 4 bánh xe độc lập cho phép robot di chuyển tịnh tiến 2D (tiến, lùi, trượt ngang) và xoay tại chỗ (yaw).
 - **Cấu trúc Tay máy (Manipulator):** Tích hợp 2 khớp tịnh tiến (Prismatic joints) phục vụ tác vụ vươn và nâng hạ.
