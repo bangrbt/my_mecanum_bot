@@ -26,7 +26,6 @@ install(DIRECTORY
 
 install(PROGRAMS
   scripts/teleop_full.py 
-  scripts/auto_trajectory.py
   scripts/read_encoder.py
   DESTINATION lib/${PROJECT_NAME}
 )
