@@ -88,6 +88,7 @@ Node tự động chuyển hóa văn bản thành tham số quỹ đạo hình h
 ```
 python3 src/my_mecanum_bot/scripts/auto_trajectory.py
 ```
+Vào Rviz Add Node `Marker` vào để thấy đường vẽ
 
    Cách sử dụng: Nhập chuỗi ký tự (VD: UET, ROS) và nhấn Enter. Robot sẽ tự động nội suy tín hiệu vận tốc để di chuyển theo hình chữ cái.
 
