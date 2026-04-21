@@ -41,16 +41,11 @@ git clone [https://github.com/](https://github.com/)<TEN_GITHUB_CUA_BAN>/my_meca
 ```
 Bước 2: Biên dịch (Build Workspace) \
 (Nhớ thay `~/mecanum_ws` bằng tên thư mục Workspace của bạn) \
-Trước khi chạy dự án cần chạy câu lệnh này trước:
+
 ```
+cd ~/mecanum_ws
 rosdep update
 rosdep install --from-paths src --ignore-src -r -y
-
-```
-Tiếp theo chạy;
-```
-
-cd ~/mecanum_ws
 rm -rf build/ install/ log/
 colcon build --packages-select my_mecanum_bot
 source install/setup.bash
