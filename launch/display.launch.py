@@ -2,7 +2,8 @@ import os
 import xacro
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable
+from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable, RegisterEventHandler
+from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
@@ -16,11 +17,15 @@ def generate_launch_description():
     doc = xacro.process_file(urdf_path)
     robot_desc = doc.toxml()
 
-    set_gazebo_model_path_cmd = SetEnvironmentVariable('GAZEBO_MODEL_PATH', os.path.join(pkg_share, '..'))
+    workspace_share_dir = os.path.dirname(pkg_share)
+    set_gazebo_model_path_cmd = SetEnvironmentVariable(
+        'GAZEBO_MODEL_PATH', 
+        os.path.join(pkg_share, 'models') + ':' + workspace_share_dir
+    )
     
-    world_file_path = os.path.join(pkg_share, 'world', 'house.world')
+    world_file_path = os.path.join(pkg_share, 'world', 'my_map.world')
 
-    # Khởi chạy Gazebo VÀ nạp file map
+    # Khởi chạy Gazebo và nạp file map
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
@@ -52,6 +57,7 @@ def generate_launch_description():
         output='screen'
     )
 
+    # --- KHỞI TẠO CÁC SPAWNER (CHƯA CHẠY NGAY) ---
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
@@ -70,13 +76,28 @@ def generate_launch_description():
         arguments=["wheel_controller"],
     )
 
+    # Bước 1: Chờ Spawn Robot xong -> Mới chạy Joint State Broadcaster
+    delay_joint_state_after_spawn = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=spawn_entity,
+            on_exit=[joint_state_broadcaster_spawner],
+        )
+    )
+
+    # Bước 2: Chờ Joint State Broadcaster chạy xong -> Mới chạy Controller cánh tay và bánh xe
+    delay_controllers_after_joint_state = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=joint_state_broadcaster_spawner,
+            on_exit=[arm_controller_spawner, wheel_controller_spawner],
+        )
+    )
+
     return LaunchDescription([
         set_gazebo_model_path_cmd,
-        gazebo, # Chỉ gọi Gazebo 1 lần ở đây thôi
+        gazebo,
         robot_state_publisher_node,
         rviz_node,
         spawn_entity,
-        joint_state_broadcaster_spawner,
-        arm_controller_spawner,
-        wheel_controller_spawner,
+        delay_joint_state_after_spawn,         # Gọi sự kiện chờ thay vì gọi Node trực tiếp
+        delay_controllers_after_joint_state,   # Gọi sự kiện chờ
     ])
