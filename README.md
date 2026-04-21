@@ -7,7 +7,7 @@ Dự án đi kèm bản báo cáo học thuật chi tiết và video nghiệm th
 ## ✨ Tính năng Kỹ thuật
 - **Động học Mecanum (Omnidirectional Kinematics):** Điều khiển 4 bánh xe độc lập cho phép robot di chuyển tịnh tiến 2D (tiến, lùi, trượt ngang) và xoay tại chỗ (yaw).
 - **Cấu trúc Tay máy (Manipulator):** Tích hợp 2 khớp tịnh tiến (Prismatic joints) phục vụ tác vụ vươn và nâng hạ.
-- **Hệ thống Cảm biến (Sensors):** Mô phỏng LiDAR quét 360 độ, Camera RGB, Encoder vấn tốc, góc bánh với luồng dữ liệu thời gian thực được map qua ROS topics.
+- **Hệ thống Cảm biến (Sensors):** Mô phỏng LiDAR quét 360 độ, Camera RGB, Encoder vận tốc, góc bánh với luồng dữ liệu thời gian thực được map qua ROS topics.
 - **Sinh quỹ đạo tự động (Auto-Trajectory & Marker):** Tự động chuyển đổi chuỗi ký tự đầu vào thành tín hiệu điều khiển vận tốc, đồng thời render quỹ đạo di chuyển trực quan thông qua `visualization_msgs/Marker`
 - **Môi trường Độc lập (Standalone Environment):** Đã được đóng gói sẵn bản đồ 3D ngôi nhà (`house.world`) và các models vật thể, cho phép khởi chạy trực tiếp mà không phụ thuộc vào các gói thư viện ngoại vi trên không gian RViz2.
 
@@ -88,14 +88,14 @@ Node tự động chuyển hóa văn bản thành tham số quỹ đạo hình h
 ```
 python3 src/my_mecanum_bot/scripts/auto_trajectory.py
 ```
-Vào Rviz Add Node `Marker` vào để thấy đường vẽ
 
    Cách sử dụng: Nhập chuỗi ký tự (VD: UET, ROS) và nhấn Enter. Robot sẽ tự động nội suy tín hiệu vận tốc để di chuyển theo hình chữ cái.
+   
 
-   Tính năng mở rộng: Nhập chuỗi mới và nhấn Enter trong lúc robot đang vận hành sẽ kích hoạt lệnh `DELETEALL` Marker, reset State Machine và bắt đầu vẽ lại từ đầu.
+   Tính năng mở rộng: Nhập chuỗi mới và nhấn Enter trong lúc robot đang vận hành sẽ kích hoạt lệnh `DELETEALL` Marker, reset State Machine và bắt đầu vẽ lại từ đầu.\
+   (Sau khi chạy lần đầu nếu không thấy hiển thị quỹ đạo hãy thực hiện: Trong giao diện RViz2, chọn Add -> Marker để hiển thị quỹ đạo trực quan)
 
 📁 Cấu trúc Thư mục (Directory Structure)
-
 Dự án được tổ chức chặt chẽ theo tiêu chuẩn C++ / Python của hệ sinh thái ROS 2:
 
    `urdf/`: Chứa tệp mô tả vật lý robot (`URDF_MECANUM.urdf`) với các thẻ inertial, collision và định nghĩa plugin Gazebo.
