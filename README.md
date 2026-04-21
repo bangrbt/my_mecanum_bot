@@ -80,13 +80,13 @@ python3 src/my_mecanum_bot/scripts/teleop_full.py
 
    Q / E: Xoay Trái / Phải (Yaw).
 
+   W + A : Tiến chéo trái     W + D : Tiến chéo phải
+   
+   S + A : Lùi chéo trái      S + D : Lùi chéo phải
+
    R / F: Tịnh tiến trục Z (Nâng/Hạ tay 1).
 
    T / G: Tịnh tiến trục X (Thò/Thụt tay 2).
-
-   W + A : Tiến chéo trái    W + D : Tiến chéo phải
-   
-   S + A : Lùi chéo trái     S + D : Lùi chéo phải
 
    ESC: Dừng khẩn cấp.
     
