@@ -24,6 +24,9 @@ def generate_launch_description():
     )
     
     world_file_path = os.path.join(pkg_share, 'world', 'my_map.world')
+    
+    # THÊM ĐƯỜNG DẪN TỚI FILE CONFIG CỦA RVIZ
+    rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
 
     # Khởi chạy Gazebo và nạp file map
     gazebo = IncludeLaunchDescription(
@@ -42,11 +45,13 @@ def generate_launch_description():
         }]
     )
 
+    # CẬP NHẬT RVIZ NODE ĐỂ NHẬN FILE CONFIG
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
         output='screen',
+        arguments=['-d', rviz_config_path], # Dòng quan trọng để load config
         parameters=[{'use_sim_time': True}]
     )
 
@@ -98,6 +103,6 @@ def generate_launch_description():
         robot_state_publisher_node,
         rviz_node,
         spawn_entity,
-        delay_joint_state_after_spawn,         # Gọi sự kiện chờ thay vì gọi Node trực tiếp
-        delay_controllers_after_joint_state,   # Gọi sự kiện chờ
+        delay_joint_state_after_spawn,         
+        delay_controllers_after_joint_state,   
     ])
