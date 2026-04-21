@@ -40,7 +40,14 @@ cd ~/mecanum_ws/src
 git clone [https://github.com/](https://github.com/)<TEN_GITHUB_CUA_BAN>/my_mecanum_bot.git
 ```
 Bước 2: Biên dịch (Build Workspace) \
-(Nhớ thay `~/mecanum_ws` bằng tên thư mục Workspace của bạn)
+(Nhớ thay `~/mecanum_ws` bằng tên thư mục Workspace của bạn) \
+Trước khi chạy dự án cần chạy câu lệnh này trước:]
+```
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+
+```
+Tiếp theo chạy;
 ```
 
 cd ~/mecanum_ws
